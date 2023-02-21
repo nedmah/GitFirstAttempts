@@ -19,11 +19,19 @@ public class ChatClient1 {
             Scanner scan = new Scanner(System.in);
             System.out.println("Введите username");
             String msg = scan.nextLine();
-
             output.writeUTF(msg); // send a message to the server
             String receivedMsg = input.readUTF(); // read the reply from the server
-
             System.out.println("Ответ сервера: " + receivedMsg);
+
+            String msg1;
+            do {
+                msg1 = scan.nextLine();
+                output.writeUTF(msg1);
+                receivedMsg = input.readUTF(); // read the reply from the server
+                System.out.println(receivedMsg);
+            } while (!msg1.equals("bye"));
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
